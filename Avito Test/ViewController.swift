@@ -32,11 +32,6 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         
         let layout = UICollectionViewCompositionalLayout(section: section)
         
-        //let layout = UICollectionViewFlowLayout()
-        //layout.scrollDirection = .vertical
-        //layout.itemSize = CGSize(width: view.bounds.width - 40, height: view.frame.size.height / 5)
-        //layout.estimatedItemSize = UICollectionViewFlowLayout.automaticSize
-        
         let frame = CGRect(x: 20, y: 200, width: view.bounds.width - 40, height: view.bounds.height - 400)
         
         //collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout.)
