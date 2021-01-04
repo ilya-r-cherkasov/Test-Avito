@@ -12,6 +12,7 @@
 		BA152B9125A26B5700468D60 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA152B9025A26B5700468D60 /* ViewController.swift */; };
 		BA152B9625A26B5800468D60 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BA152B9525A26B5800468D60 /* Assets.xcassets */; };
 		BA152B9925A26B5800468D60 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BA152B9725A26B5800468D60 /* LaunchScreen.storyboard */; };
+		BA152BAE25A2794300468D60 /* CustomCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA152BAD25A2794300468D60 /* CustomCollectionViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +23,7 @@
 		BA152B9525A26B5800468D60 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		BA152B9825A26B5800468D60 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		BA152B9A25A26B5800468D60 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		BA152BAD25A2794300468D60 /* CustomCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCollectionViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -57,6 +59,7 @@
 				BA152B8C25A26B5700468D60 /* AppDelegate.swift */,
 				BA152B8E25A26B5700468D60 /* SceneDelegate.swift */,
 				BA152B9025A26B5700468D60 /* ViewController.swift */,
+				BA152BAD25A2794300468D60 /* CustomCollectionViewCell.swift */,
 				BA152B9525A26B5800468D60 /* Assets.xcassets */,
 				BA152B9725A26B5800468D60 /* LaunchScreen.storyboard */,
 				BA152B9A25A26B5800468D60 /* Info.plist */,
@@ -135,6 +138,7 @@
 			files = (
 				BA152B9125A26B5700468D60 /* ViewController.swift in Sources */,
 				BA152B8D25A26B5700468D60 /* AppDelegate.swift in Sources */,
+				BA152BAE25A2794300468D60 /* CustomCollectionViewCell.swift in Sources */,
 				BA152B8F25A26B5700468D60 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
