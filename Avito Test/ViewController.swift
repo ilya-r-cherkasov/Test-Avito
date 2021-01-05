@@ -14,8 +14,18 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         self.view.backgroundColor = .white
-        //ClearButton
+        //CloseIconTemplate
+        let imageView = UIImageView()
+        imageView.image = UIImage(named: "CloseIconTemplate")
+        view.addSubview(imageView)
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+        imageView.leadingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.leadingAnchor, constant: 15).isActive = true
+        imageView.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor, constant: 15).isActive = true
+        imageView.heightAnchor.constraint(equalToConstant: 25).isActive = true
+        imageView.widthAnchor.constraint(equalToConstant: 25).isActive = true
+        imageView.sizeToFit()
         //TextLabel
         
         // CollectionView
@@ -40,11 +50,13 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         view.addSubview(collectionView)
         collectionView.collectionViewLayout.invalidateLayout()
         collectionView.translatesAutoresizingMaskIntoConstraints = false
-        collectionView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 15).isActive = true
-        collectionView.topAnchor.constraint(equalTo: self.view.topAnchor, constant: 15).isActive = true
+        collectionView.leadingAnchor.constraint(equalTo: imageView.leadingAnchor, constant: 15).isActive = true
+        collectionView.topAnchor.constraint(equalTo: imageView.bottomAnchor, constant: 15).isActive = true
         collectionView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -15).isActive = true
         collectionView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor, constant: -15).isActive = true
         collectionView.backgroundColor = .white
+        collectionView.sizeToFit()
+
     }
 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -59,6 +71,8 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         print("\(indexPath)")
     }
+    
+    //selectButton
 
 }
 
