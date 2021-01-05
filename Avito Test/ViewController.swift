@@ -25,16 +25,11 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         )
         let item = NSCollectionLayoutItem(layoutSize: size)
         let group = NSCollectionLayoutGroup.horizontal(layoutSize: size, subitem: item, count: 1)
-
         let section = NSCollectionLayoutSection(group: group)
         section.contentInsets = NSDirectionalEdgeInsets(top: 10, leading: 10, bottom: 10, trailing: 10)
         section.interGroupSpacing = 10
         
         let layout = UICollectionViewCompositionalLayout(section: section)
-        
-        let frame = CGRect(x: 20, y: 200, width: view.bounds.width - 40, height: view.bounds.height - 400)
-        
-        //collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout.)
         collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         guard let collectionView = collectionView else {
             return
@@ -42,10 +37,14 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         collectionView.register(CustomCollectionViewCell.self, forCellWithReuseIdentifier: CustomCollectionViewCell.indentifier)
         collectionView.dataSource = self
         collectionView.delegate = self
-        collectionView.frame = frame
-        collectionView.collectionViewLayout.invalidateLayout()
-        collectionView.backgroundColor = .white
         view.addSubview(collectionView)
+        collectionView.collectionViewLayout.invalidateLayout()
+        collectionView.translatesAutoresizingMaskIntoConstraints = false
+        collectionView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 15).isActive = true
+        collectionView.topAnchor.constraint(equalTo: self.view.topAnchor, constant: 15).isActive = true
+        collectionView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -15).isActive = true
+        collectionView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor, constant: -15).isActive = true
+        collectionView.backgroundColor = .white
     }
 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {

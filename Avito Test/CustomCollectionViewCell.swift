@@ -21,29 +21,79 @@ class CustomCollectionViewCell: UICollectionViewCell {
     private let titleLabel: UILabel = {
         let label = UILabel()
         label.text = "XL-объявление"
+        //label.backgroundColor = .green
         return label
     }()
     
     private let descriptionLabel: UILabel = {
         let label = UILabel()
-        label.text = "Пользователи смогут посмотреть фотографии, описание и телефон прямо из результатов поиска. Пользователи смогут посмотреть фотографии, описание и телефон прямо из результатов поиска"
-        //label.backgroundColor = .yellow
+        label.text = "Пользователи смогут посмотреть фотографии, описание и телефон прямо из результатов поиска."
+        //label.backgroundColor = .red
         return label
+    }()
+    
+    private let costLabel: UILabel = {
+        let label = UILabel()
+        label.text = "354$"
+        //label.backgroundColor = .blue
+        return label
+    }()
+    
+    private let checkmarkImageView: UIImageView = {
+        let imageView = UIImageView()
+        imageView.image = UIImage(named: "checkmark")
+        //imageView.backgroundColor = .yellow
+        return imageView
     }()
 
     override init(frame: CGRect) {
         super.init(frame: frame)
-        //contentView.addSubview(titleLabel)
+        
+        contentView.addSubview(iconImageView)
+        iconImageView.translatesAutoresizingMaskIntoConstraints = false
+        iconImageView.widthAnchor.constraint(equalToConstant: 55).isActive = true
+        iconImageView.heightAnchor.constraint(equalToConstant: 55).isActive = true
+        iconImageView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 15).isActive = true
+        iconImageView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 15).isActive = true
+        iconImageView.sizeToFit()
+        
+        contentView.addSubview(titleLabel)
+        titleLabel.translatesAutoresizingMaskIntoConstraints = false
+        titleLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 15).isActive = true
+        titleLabel.leadingAnchor.constraint(equalTo: iconImageView.trailingAnchor, constant: 15).isActive = true
+        titleLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -50).isActive = true
+        titleLabel.lineBreakMode = .byWordWrapping
+        titleLabel.numberOfLines = 0
+        titleLabel.font = UIFont.boldSystemFont(ofSize: 24.0)
+        titleLabel.sizeToFit()
+        
         contentView.addSubview(descriptionLabel)
-        //contentView.addSubview(iconImageView)
         descriptionLabel.translatesAutoresizingMaskIntoConstraints = false
-        descriptionLabel.topAnchor.constraint(equalTo: contentView.topAnchor).isActive = true
-        descriptionLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor).isActive = true
-        descriptionLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor).isActive = true
-        descriptionLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor).isActive = true
+        descriptionLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 5).isActive = true
+        descriptionLabel.leadingAnchor.constraint(equalTo: iconImageView.trailingAnchor, constant: 15).isActive = true
+        descriptionLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -50).isActive = true
         descriptionLabel.lineBreakMode = .byWordWrapping
         descriptionLabel.numberOfLines = 0
         descriptionLabel.sizeToFit()
+        
+        contentView.addSubview(costLabel)
+        costLabel.translatesAutoresizingMaskIntoConstraints = false
+        costLabel.topAnchor.constraint(equalTo: descriptionLabel.bottomAnchor, constant: 5).isActive = true
+        costLabel.leadingAnchor.constraint(equalTo: iconImageView.trailingAnchor, constant: 15).isActive = true
+        costLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -50).isActive = true
+        costLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -15).isActive = true
+        costLabel.lineBreakMode = .byWordWrapping
+        costLabel.numberOfLines = 0
+        costLabel.font = UIFont.boldSystemFont(ofSize: 20.0)
+        costLabel.sizeToFit()
+        
+        contentView.addSubview(checkmarkImageView)
+        checkmarkImageView.translatesAutoresizingMaskIntoConstraints = false
+        checkmarkImageView.widthAnchor.constraint(equalToConstant: 20).isActive = true
+        checkmarkImageView.heightAnchor.constraint(equalToConstant: 20).isActive = true
+        checkmarkImageView.centerYAnchor.constraint(equalTo: contentView.centerYAnchor).isActive = true
+        checkmarkImageView.leadingAnchor.constraint(greaterThanOrEqualTo: descriptionLabel.trailingAnchor, constant: 15).isActive = true
+        checkmarkImageView.sizeToFit()
     }
     
     required init?(coder: NSCoder) {
@@ -54,24 +104,5 @@ class CustomCollectionViewCell: UICollectionViewCell {
         super.layoutSubviews()
         self.layer.backgroundColor = CGColor(red: 0.5, green: 0.5, blue: 0.5, alpha: 0.2)
         self.layer.cornerRadius = 10.0
-        
-        iconImageView.frame = CGRect(x: 15,
-                               y: 15,
-                               width: 55,
-                               height: 55)
-        
-        titleLabel.frame = CGRect(x: 100,
-                               y: 15,
-                               width: contentView.frame.size.width - 115,
-                               height: 50)
-        titleLabel.font = UIFont.boldSystemFont(ofSize: 24.0)
-        
-        descriptionLabel.frame = CGRect(x: 100,
-                               y: 50,
-                               width: contentView.frame.size.width - 115,
-                               height: 100)
-        descriptionLabel.lineBreakMode = .byWordWrapping
-        descriptionLabel.numberOfLines = 0
-        descriptionLabel.sizeToFit()
     }
 }
