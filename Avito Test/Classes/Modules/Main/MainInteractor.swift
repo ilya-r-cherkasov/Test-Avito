@@ -9,12 +9,23 @@ import Foundation
 
 protocol MainInteractorProtocol: class {
     
+    var presenter: MainPresenterProtocol? { get set }
+
+    func fetchDataModel()
 }
 
-class MainInteractor {
+class MainInteractor: MainInteractorProtocol {
     
-}
+    weak var presenter: MainPresenterProtocol?
+    
+    func fetchDataModel() {
 
-extension MainInteractor: MainInteractorProtocol {
+        NetworkManager().fetchResult(completitonHandler: { dataModel in
+            DispatchQueue.main.async {
+                self.presenter?.view?.showMainView(with: dataModel)
+            }
+        })
+
+    }
     
 }

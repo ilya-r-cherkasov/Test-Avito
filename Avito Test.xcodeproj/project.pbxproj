@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		BA1479EB25A4E92000D1C9F1 /* Networking.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA1479E925A4E92000D1C9F1 /* Networking.swift */; };
+		BA1479EB25A4E92000D1C9F1 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA1479E925A4E92000D1C9F1 /* NetworkManager.swift */; };
 		BA1479EC25A4E92000D1C9F1 /* Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA1479EA25A4E92000D1C9F1 /* Result.swift */; };
 		BA152B8D25A26B5700468D60 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA152B8C25A26B5700468D60 /* AppDelegate.swift */; };
 		BA152B8F25A26B5700468D60 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA152B8E25A26B5700468D60 /* SceneDelegate.swift */; };
@@ -23,7 +23,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		BA1479E925A4E92000D1C9F1 /* Networking.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Networking.swift; sourceTree = "<group>"; };
+		BA1479E925A4E92000D1C9F1 /* NetworkManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		BA1479EA25A4E92000D1C9F1 /* Result.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Result.swift; sourceTree = "<group>"; };
 		BA152B8925A26B5700468D60 /* Avito Test.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Avito Test.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		BA152B8C25A26B5700468D60 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -72,7 +72,6 @@
 			children = (
 				BA6B6A3425AB72C800B54A4E /* Classes */,
 				BA6B6A1925AB68BD00B54A4E /* Servises */,
-				BA6B6A3B25AB740600B54A4E /* Managers */,
 				BA6B6A3825AB738D00B54A4E /* Resourses */,
 				BA6B6A3525AB732E00B54A4E /* Supporting Files */,
 			);
@@ -82,7 +81,7 @@
 		BA6B6A1725AB67D700B54A4E /* Network */ = {
 			isa = PBXGroup;
 			children = (
-				BA1479E925A4E92000D1C9F1 /* Networking.swift */,
+				BA1479E925A4E92000D1C9F1 /* NetworkManager.swift */,
 				BA1479EA25A4E92000D1C9F1 /* Result.swift */,
 			);
 			path = Network;
@@ -159,13 +158,6 @@
 				BA152B9525A26B5800468D60 /* Assets.xcassets */,
 			);
 			path = Resourses;
-			sourceTree = "<group>";
-		};
-		BA6B6A3B25AB740600B54A4E /* Managers */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Managers;
 			sourceTree = "<group>";
 		};
 		BA6B6A5A25AD9E4400B54A4E /* Entity */ = {
@@ -247,7 +239,7 @@
 			files = (
 				BA1479EC25A4E92000D1C9F1 /* Result.swift in Sources */,
 				BA152B9125A26B5700468D60 /* MainView.swift in Sources */,
-				BA1479EB25A4E92000D1C9F1 /* Networking.swift in Sources */,
+				BA1479EB25A4E92000D1C9F1 /* NetworkManager.swift in Sources */,
 				BA152B8D25A26B5700468D60 /* AppDelegate.swift in Sources */,
 				BA6B6A5825AD9D3900B54A4E /* DataModel.swift in Sources */,
 				BA6B6A2A25AB704E00B54A4E /* MainRouter.swift in Sources */,
@@ -397,6 +389,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 65HCRGU5FA;
 				INFOPLIST_FILE = "$(SRCROOT)/Avito Test/Supporting Files/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -416,6 +409,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 65HCRGU5FA;
 				INFOPLIST_FILE = "$(SRCROOT)/Avito Test/Supporting Files/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

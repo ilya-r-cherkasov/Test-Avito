@@ -6,15 +6,17 @@
 //
 
 protocol MainPresenterProtocol: class {
+    
     var view: MainViewProtocol? { get set }
     var interactor: MainInteractorProtocol? { get set }
     var router: MainRouterProtocol? {get set}
+    var dataModel: DataModel? {get set}
     
-    //View -> Presenter
     func viewDidLoad()
+    
 }
 
-class MainPresenter: MainPresenterProtocol{
+class MainPresenter: MainPresenterProtocol {
     
     weak var view: MainViewProtocol?
     var interactor: MainInteractorProtocol?
@@ -22,8 +24,7 @@ class MainPresenter: MainPresenterProtocol{
     var dataModel: DataModel?
     
     func viewDidLoad() {
-        dataModel = DataModel()
-        view?.showMainView(with: dataModel!)
-        print("viewDidLoadPresenter")
+        interactor?.fetchDataModel()
     }
+    
 }
