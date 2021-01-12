@@ -11,10 +11,15 @@
 		BA1479EC25A4E92000D1C9F1 /* Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA1479EA25A4E92000D1C9F1 /* Result.swift */; };
 		BA152B8D25A26B5700468D60 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA152B8C25A26B5700468D60 /* AppDelegate.swift */; };
 		BA152B8F25A26B5700468D60 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA152B8E25A26B5700468D60 /* SceneDelegate.swift */; };
-		BA152B9125A26B5700468D60 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA152B9025A26B5700468D60 /* ViewController.swift */; };
+		BA152B9125A26B5700468D60 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA152B9025A26B5700468D60 /* MainView.swift */; };
 		BA152B9625A26B5800468D60 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BA152B9525A26B5800468D60 /* Assets.xcassets */; };
 		BA152B9925A26B5800468D60 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BA152B9725A26B5800468D60 /* LaunchScreen.storyboard */; };
 		BA152BAE25A2794300468D60 /* CustomCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA152BAD25A2794300468D60 /* CustomCollectionViewCell.swift */; };
+		BA6B6A2125AB6FA100B54A4E /* MainPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA6B6A2025AB6FA100B54A4E /* MainPresenter.swift */; };
+		BA6B6A2425AB701700B54A4E /* MainInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA6B6A2325AB701700B54A4E /* MainInteractor.swift */; };
+		BA6B6A2A25AB704E00B54A4E /* MainRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA6B6A2925AB704E00B54A4E /* MainRouter.swift */; };
+		BA6B6A2E25AB706200B54A4E /* MainProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA6B6A2D25AB706200B54A4E /* MainProtocols.swift */; };
+		BA6B6A5825AD9D3900B54A4E /* DataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA6B6A5725AD9D3900B54A4E /* DataModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -23,11 +28,16 @@
 		BA152B8925A26B5700468D60 /* Avito Test.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Avito Test.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		BA152B8C25A26B5700468D60 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BA152B8E25A26B5700468D60 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		BA152B9025A26B5700468D60 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		BA152B9025A26B5700468D60 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		BA152B9525A26B5800468D60 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		BA152B9825A26B5800468D60 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		BA152B9A25A26B5800468D60 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BA152BAD25A2794300468D60 /* CustomCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCollectionViewCell.swift; sourceTree = "<group>"; };
+		BA6B6A2025AB6FA100B54A4E /* MainPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainPresenter.swift; sourceTree = "<group>"; };
+		BA6B6A2325AB701700B54A4E /* MainInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainInteractor.swift; sourceTree = "<group>"; };
+		BA6B6A2925AB704E00B54A4E /* MainRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainRouter.swift; sourceTree = "<group>"; };
+		BA6B6A2D25AB706200B54A4E /* MainProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainProtocols.swift; sourceTree = "<group>"; };
+		BA6B6A5725AD9D3900B54A4E /* DataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,17 +70,110 @@
 		BA152B8B25A26B5700468D60 /* Avito Test */ = {
 			isa = PBXGroup;
 			children = (
-				BA152B8C25A26B5700468D60 /* AppDelegate.swift */,
-				BA152B8E25A26B5700468D60 /* SceneDelegate.swift */,
-				BA152B9025A26B5700468D60 /* ViewController.swift */,
-				BA152BAD25A2794300468D60 /* CustomCollectionViewCell.swift */,
+				BA6B6A3425AB72C800B54A4E /* Classes */,
+				BA6B6A1925AB68BD00B54A4E /* Servises */,
+				BA6B6A3B25AB740600B54A4E /* Managers */,
+				BA6B6A3825AB738D00B54A4E /* Resourses */,
+				BA6B6A3525AB732E00B54A4E /* Supporting Files */,
+			);
+			path = "Avito Test";
+			sourceTree = "<group>";
+		};
+		BA6B6A1725AB67D700B54A4E /* Network */ = {
+			isa = PBXGroup;
+			children = (
 				BA1479E925A4E92000D1C9F1 /* Networking.swift */,
 				BA1479EA25A4E92000D1C9F1 /* Result.swift */,
-				BA152B9525A26B5800468D60 /* Assets.xcassets */,
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
+		BA6B6A1825AB684C00B54A4E /* Modules */ = {
+			isa = PBXGroup;
+			children = (
+				BA6B6A5A25AD9E4400B54A4E /* Entity */,
+				BA6B6A1D25AB6A0300B54A4E /* Functional View */,
+				BA6B6A1A25AB693F00B54A4E /* Main */,
+			);
+			path = Modules;
+			sourceTree = "<group>";
+		};
+		BA6B6A1925AB68BD00B54A4E /* Servises */ = {
+			isa = PBXGroup;
+			children = (
+				BA6B6A1725AB67D700B54A4E /* Network */,
+			);
+			path = Servises;
+			sourceTree = "<group>";
+		};
+		BA6B6A1A25AB693F00B54A4E /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				BA152B9025A26B5700468D60 /* MainView.swift */,
+				BA6B6A2025AB6FA100B54A4E /* MainPresenter.swift */,
+				BA6B6A2325AB701700B54A4E /* MainInteractor.swift */,
+				BA6B6A2925AB704E00B54A4E /* MainRouter.swift */,
+				BA6B6A2D25AB706200B54A4E /* MainProtocols.swift */,
+			);
+			path = Main;
+			sourceTree = "<group>";
+		};
+		BA6B6A1D25AB6A0300B54A4E /* Functional View */ = {
+			isa = PBXGroup;
+			children = (
+				BA152BAD25A2794300468D60 /* CustomCollectionViewCell.swift */,
+			);
+			path = "Functional View";
+			sourceTree = "<group>";
+		};
+		BA6B6A3325AB728C00B54A4E /* App */ = {
+			isa = PBXGroup;
+			children = (
+				BA152B8C25A26B5700468D60 /* AppDelegate.swift */,
+				BA152B8E25A26B5700468D60 /* SceneDelegate.swift */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		BA6B6A3425AB72C800B54A4E /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				BA6B6A3325AB728C00B54A4E /* App */,
+				BA6B6A1825AB684C00B54A4E /* Modules */,
+			);
+			path = Classes;
+			sourceTree = "<group>";
+		};
+		BA6B6A3525AB732E00B54A4E /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
 				BA152B9725A26B5800468D60 /* LaunchScreen.storyboard */,
 				BA152B9A25A26B5800468D60 /* Info.plist */,
 			);
-			path = "Avito Test";
+			path = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		BA6B6A3825AB738D00B54A4E /* Resourses */ = {
+			isa = PBXGroup;
+			children = (
+				BA152B9525A26B5800468D60 /* Assets.xcassets */,
+			);
+			path = Resourses;
+			sourceTree = "<group>";
+		};
+		BA6B6A3B25AB740600B54A4E /* Managers */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Managers;
+			sourceTree = "<group>";
+		};
+		BA6B6A5A25AD9E4400B54A4E /* Entity */ = {
+			isa = PBXGroup;
+			children = (
+				BA6B6A5725AD9D3900B54A4E /* DataModel.swift */,
+			);
+			path = Entity;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -143,11 +246,16 @@
 			buildActionMask = 2147483647;
 			files = (
 				BA1479EC25A4E92000D1C9F1 /* Result.swift in Sources */,
-				BA152B9125A26B5700468D60 /* ViewController.swift in Sources */,
+				BA152B9125A26B5700468D60 /* MainView.swift in Sources */,
 				BA1479EB25A4E92000D1C9F1 /* Networking.swift in Sources */,
 				BA152B8D25A26B5700468D60 /* AppDelegate.swift in Sources */,
+				BA6B6A5825AD9D3900B54A4E /* DataModel.swift in Sources */,
+				BA6B6A2A25AB704E00B54A4E /* MainRouter.swift in Sources */,
 				BA152BAE25A2794300468D60 /* CustomCollectionViewCell.swift in Sources */,
+				BA6B6A2125AB6FA100B54A4E /* MainPresenter.swift in Sources */,
+				BA6B6A2E25AB706200B54A4E /* MainProtocols.swift in Sources */,
 				BA152B8F25A26B5700468D60 /* SceneDelegate.swift in Sources */,
+				BA6B6A2425AB701700B54A4E /* MainInteractor.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -288,7 +396,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 65HCRGU5FA;
-				INFOPLIST_FILE = "Avito Test/Info.plist";
+				INFOPLIST_FILE = "$(SRCROOT)/Avito Test/Supporting Files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -307,7 +415,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 65HCRGU5FA;
-				INFOPLIST_FILE = "Avito Test/Info.plist";
+				INFOPLIST_FILE = "$(SRCROOT)/Avito Test/Supporting Files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

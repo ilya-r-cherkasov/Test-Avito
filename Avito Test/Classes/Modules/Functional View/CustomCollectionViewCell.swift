@@ -14,35 +14,30 @@ class CustomCollectionViewCell: UICollectionViewCell {
     private let iconImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.image = UIImage(named: "vas-xl-52")
-        //imageView.backgroundColor = .yellow
         return imageView
     }()
     
     private let titleLabel: UILabel = {
         let label = UILabel()
         label.text = "XL-объявление"
-        //label.backgroundColor = .green
         return label
     }()
     
     private let descriptionLabel: UILabel = {
         let label = UILabel()
         label.text = "Пользователи смогут посмотреть фотографии, описание и телефон прямо из результатов поиска."
-        //label.backgroundColor = .red
         return label
     }()
     
     private let costLabel: UILabel = {
         let label = UILabel()
         label.text = "354$"
-        //label.backgroundColor = .blue
         return label
     }()
     
     private let checkmarkImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.image = UIImage(named: "checkmark")
-        //imageView.backgroundColor = .yellow
         return imageView
     }()
 

@@ -7,14 +7,25 @@
 
 import UIKit
 
-class ViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
+protocol MainViewProtocol: class {
     
+    var presenter: MainPresenterProtocol? { get set }
+    func showMainView(with dataModel: DataModel)
+}
+
+class MainView: UIViewController, MainViewProtocol, UICollectionViewDelegate, UICollectionViewDataSource {
     
+    var presenter: MainPresenterProtocol?
     private var collectionView: UICollectionView?
 
+    // MARK: - Lifecycle methods
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        MainRouter.createMainViewModule(mainViewRef: self)
+        presenter?.viewDidLoad()
+    }
+    
+    func showMainView(with dataModel: DataModel) {
         self.view.backgroundColor = .white
         //CloseIconTemplate
         let imageView = UIImageView()
@@ -26,8 +37,6 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         imageView.heightAnchor.constraint(equalToConstant: 25).isActive = true
         imageView.widthAnchor.constraint(equalToConstant: 25).isActive = true
         imageView.sizeToFit()
-        //TextLabel
-        
         // CollectionView
         let size = NSCollectionLayoutSize(
             widthDimension: NSCollectionLayoutDimension.fractionalWidth(1),
@@ -38,7 +47,7 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         let section = NSCollectionLayoutSection(group: group)
         section.contentInsets = NSDirectionalEdgeInsets(top: 10, leading: 10, bottom: 10, trailing: 10)
         section.interGroupSpacing = 10
-        
+
         let layout = UICollectionViewCompositionalLayout(section: section)
         collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         guard let collectionView = collectionView else {
@@ -56,7 +65,6 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         collectionView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor, constant: -15).isActive = true
         collectionView.backgroundColor = .white
         collectionView.sizeToFit()
-
     }
 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -72,7 +80,11 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         print("\(indexPath)")
     }
     
+    // MARK: - Action methods
     //selectButton
 
 }
 
+//extension MainView: UICollectionViewDelegate, UICollectionViewDataSource {
+//
+//}
