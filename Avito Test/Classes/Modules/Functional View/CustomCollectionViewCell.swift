@@ -10,17 +10,21 @@ import UIKit
 class CustomCollectionViewCell: UICollectionViewCell {
     
     static let indentifier = "CustomCollectionView"
+    var data: ListCell? {
+        didSet {
+            guard let data = data else { return }
+            iconImageView.image = data.icon.image
+            titleLabel.text = data.title
+            descriptionLabel.text = data.listDescription
+            costLabel.text = data.price
+            checkmarkImageView.isHidden = data.checkMarkIsHidden
+        }
+    }
     
     private let iconImageView: UIImageView = {
         
         let imageView = UIImageView()
-        
-        let url = URL(string:"https://www.avito.ru/s/common/components/monetization/icons/apps/vas-highlight-52.png")
-            if let data = try? Data(contentsOf: url!)
-            {
-                imageView.image = UIImage(data: data)
-            }
-        
+        imageView.image = UIImage(named: "checkmark")
         return imageView
         
     }()
@@ -28,7 +32,7 @@ class CustomCollectionViewCell: UICollectionViewCell {
     private let titleLabel: UILabel = {
 
         let label = UILabel()
-        label.text = "XL-объявление"
+        label.text = "Заголовок"
         return label
         
     }()
@@ -36,7 +40,7 @@ class CustomCollectionViewCell: UICollectionViewCell {
     private let descriptionLabel: UILabel = {
         
         let label = UILabel()
-        label.text = "Пользователи смогут посмотреть фотографии, описание и телефон прямо из результатов поиска."
+        label.text = "Описание"
         return label
         
     }()
@@ -44,7 +48,7 @@ class CustomCollectionViewCell: UICollectionViewCell {
     private let costLabel: UILabel = {
         
         let label = UILabel()
-        label.text = "354$"
+        label.text = "123$"
         return label
         
     }()
@@ -108,6 +112,15 @@ class CustomCollectionViewCell: UICollectionViewCell {
         checkmarkImageView.sizeToFit()
         
     }
+    
+    func checkMarkSelected() {
+        checkmarkImageView.isHidden = false
+    }
+    
+    func checkMarkDeselected() {
+        checkmarkImageView.isHidden = true
+    }
+
     
     required init?(coder: NSCoder) {
         

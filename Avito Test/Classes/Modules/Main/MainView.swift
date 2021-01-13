@@ -11,12 +11,15 @@ protocol MainViewProtocol: class {
     
     var presenter: MainPresenterProtocol? { get set }
     func showMainView(with dataModel: DataModel)
+    
 }
 
 class MainView: UIViewController, MainViewProtocol, UICollectionViewDelegate, UICollectionViewDataSource {
     
     var presenter: MainPresenterProtocol?
     private var collectionView: UICollectionView?
+    var data: DataModel?
+    var indexOfSelectedService: Int?
 
     // MARK: - Lifecycle methods
     override func viewDidLoad() {
@@ -30,6 +33,7 @@ class MainView: UIViewController, MainViewProtocol, UICollectionViewDelegate, UI
         print("showMainView")
         
         self.view.backgroundColor = .white
+        data = dataModel
         
         //CloseIconTemplate
         let imageView = UIImageView()
@@ -44,7 +48,7 @@ class MainView: UIViewController, MainViewProtocol, UICollectionViewDelegate, UI
         
         //TitleLabel
         let titleLabel = UILabel()
-        titleLabel.text = dataModel.title
+        titleLabel.text = data!.title
         titleLabel.lineBreakMode = .byWordWrapping
         titleLabel.numberOfLines = 0
         titleLabel.font = UIFont.boldSystemFont(ofSize: 30.0)
@@ -54,6 +58,21 @@ class MainView: UIViewController, MainViewProtocol, UICollectionViewDelegate, UI
         titleLabel.topAnchor.constraint(equalTo: imageView.bottomAnchor, constant: 15).isActive = true
         titleLabel.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -15).isActive = true
         titleLabel.sizeToFit()
+        
+        //selectButton
+        let selectButton = UIButton()
+        selectButton.setTitle("Выбрать", for: .normal)
+        selectButton.setTitleColor(.white, for: .normal)
+        selectButton.backgroundColor = UIColor(named: "MyBlueColor")
+        selectButton.layer.cornerRadius = 5
+        selectButton.addTarget(self, action: #selector(selectItem), for: .touchUpInside)
+        view.addSubview(selectButton)
+        selectButton.translatesAutoresizingMaskIntoConstraints = false
+        selectButton.heightAnchor.constraint(equalToConstant: 50).isActive = true
+        selectButton.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 15).isActive = true
+        selectButton.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -15).isActive = true
+        selectButton.bottomAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.bottomAnchor, constant: -15).isActive = true
+        selectButton.sizeToFit()
         
         // CollectionView
         let size = NSCollectionLayoutSize(
@@ -74,41 +93,83 @@ class MainView: UIViewController, MainViewProtocol, UICollectionViewDelegate, UI
         collectionView.dataSource = self
         collectionView.delegate = self
         view.addSubview(collectionView)
-        collectionView.collectionViewLayout.invalidateLayout()
+        //collectionView.collectionViewLayout.invalidateLayout()
         collectionView.translatesAutoresizingMaskIntoConstraints = false
         collectionView.leadingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.leadingAnchor, constant: 15).isActive = true
         collectionView.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 15).isActive = true
         collectionView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -15).isActive = true
-        collectionView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor, constant: -15).isActive = true
+        collectionView.bottomAnchor.constraint(equalTo: selectButton.topAnchor, constant: -15).isActive = true
         collectionView.backgroundColor = .white
         collectionView.sizeToFit()
+        
+        
         
     }
 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         
-        return 3
+        print("numberOfItemsInSection")
+        return (data?.list.count)!
         
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CustomCollectionViewCell.indentifier, for: indexPath)
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CustomCollectionViewCell.indentifier, for: indexPath) as! CustomCollectionViewCell
+        cell.data = self.data?.list[indexPath.row]
+        print("cellForItemAt")
         return cell
         
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
-        print("\(indexPath)")
+        let cell = collectionView.cellForItem(at: indexPath) as? CustomCollectionViewCell
+        if indexOfSelectedService == indexPath.row {
+            cell?.checkMarkDeselected()
+            indexOfSelectedService = nil
+            
+        } else {
+            
+        cell?.checkMarkSelected()
+        indexOfSelectedService = indexPath.row
+        print("didSelectItemAt")
+            
+        }
+        
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
+        
+        let cell = collectionView.cellForItem(at: indexPath) as? CustomCollectionViewCell
+        cell?.checkMarkDeselected()
+        indexOfSelectedService = indexPath.row
+        print("didDeselectItemAt")
         
     }
     
     // MARK: - Action methods
-    //selectButton
+    @objc func selectItem() {
+        
+        if indexOfSelectedService != nil {
+            
+        let alert = UIAlertController(title: data?.list[indexOfSelectedService!].title, message: data?.list[indexOfSelectedService!].listDescription, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: NSLocalizedString("OK", comment: "Defaul action"), style: .default, handler: { _ in
+            NSLog("Оповещение \"Услуга выбрана\"")
+        }))
+        self.present(alert, animated: true, completion: nil)
+            
+        } else {
+            
+            let alert = UIAlertController(title: "Услуга не выбрана", message: "Выберите, пожалуйста, услугу", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: NSLocalizedString("OK", comment: "Defaul action"), style: .default, handler: { _ in
+                NSLog("Оповещение \"Услуга не выбрана\"")
+            }))
+            self.present(alert, animated: true, completion: nil)
 
+        }
+        
+    }
+    
 }
-
-//extension MainView: UICollectionViewDelegate, UICollectionViewDataSource {
-//
-//}
+    
