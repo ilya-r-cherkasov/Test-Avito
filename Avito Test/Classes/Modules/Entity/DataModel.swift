@@ -28,7 +28,10 @@ struct DataModel {
                 
                 imageView.image = UIImage(data: data)
                 
-                self.list.append(ListCell(title: i.title, price: i.price, listDescription: i.listDescription, iconString: i.icon.the52X52, icon: imageView))
+                if i.isSelected == true {
+                    
+                    self.list.append(ListCell(title: i.title, price: i.price, listDescription: i.listDescription, iconString: i.icon.the52X52, icon: imageView))
+                }
             }
         }
         
@@ -41,6 +44,7 @@ struct ListCell {
     let title, price: String
     let listDescription: String?
     let iconString: String
+    //let isSelected: Bool
     var checkMarkIsHidden = true
     var icon: UIImageView
         

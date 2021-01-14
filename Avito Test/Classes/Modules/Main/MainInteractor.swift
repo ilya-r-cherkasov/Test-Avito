@@ -20,13 +20,21 @@ class MainInteractor: MainInteractorProtocol {
     
     func fetchDataModel() {
 
-        self.presenter?.view?.showMainView(with: nil)
+        self.presenter?.view?.showMainView()
         
-        NetworkManager().fetchResult(completitonHandler: { dataModel in
+        NetworkManager().fetchResult(completitonHandler: { dataModel, error in
             
             DispatchQueue.main.async {
                 
-                self.presenter?.view?.showMainView(with: dataModel)
+                if (dataModel != nil) && (dataModel?.list.count != 0) {
+                    self.presenter?.view?.dataGet = dataModel
+                } else {
+                    self.presenter?.view?.ifDataDoesntLoad()
+                }
+                if (error != nil) {
+                    self.presenter?.view?.ifDataDoesntLoad()
+                    print("errorInInt2")
+                }
                 
             }
             

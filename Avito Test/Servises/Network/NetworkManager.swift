@@ -7,22 +7,33 @@
 
 import Foundation
 struct NetworkManager {
-    func fetchResult(completitonHandler: @escaping (DataModel) -> Void ) {
-        
-        let urlString = "https://raw.githubusercontent.com/avito-tech/internship/main/result.json"
-        guard let url = URL(string: urlString) else {
-            return
-        }
-        let session = URLSession(configuration: .default)
-        let task = session.dataTask(with: url) { data, response, error in
-            if let data = data {
-                if let dataModel = self.parseJSON(withData: data) {
-                    completitonHandler(dataModel)
+    
+    enum MyError: Error {
+        case DataIsNil
+    }
+
+    func fetchResult(completitonHandler: @escaping (DataModel?, Error?) -> Void) {
+        let url = URL(string: "https://raw.githubusercontent.com/avito-tech/internship/main/result.json")!
+        let session = URLSession.shared
+        let task = session.dataTask(with: url, completionHandler: { data, response, error in
+            do {
+                if let error = error {
+                    print("errorInInt1")
+                    completitonHandler(nil, error)
+                } else {
+                    guard let data = self.parseJSON(withData: data!) else {
+                        throw MyError.DataIsNil
+                    }
+                    completitonHandler(data, nil)
                 }
+            } catch let blockError {
+                print(blockError)
             }
-        }
+        })
         task.resume()
     }
+    
+    
     
     func parseJSON(withData data: Data) -> DataModel? {
         let decoder = JSONDecoder()
