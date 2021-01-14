@@ -20,10 +20,16 @@ class MainInteractor: MainInteractorProtocol {
     
     func fetchDataModel() {
 
+        self.presenter?.view?.showMainView(with: nil)
+        
         NetworkManager().fetchResult(completitonHandler: { dataModel in
+            
             DispatchQueue.main.async {
+                
                 self.presenter?.view?.showMainView(with: dataModel)
+                
             }
+            
         })
 
     }

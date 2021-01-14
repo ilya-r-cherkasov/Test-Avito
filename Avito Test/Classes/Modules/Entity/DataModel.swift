@@ -16,18 +16,20 @@ struct DataModel {
     init?(result: Result) {
         
         self.title = result.result.title
+        
         for i in result.result.list {
             
-            let imageView = UIImageView()
-            
-            let url = URL(string: i.icon.the52X52)
-            if let data = try? Data(contentsOf: url!)
-            {
+            DispatchQueue.main.sync {
+                
+                let imageView = UIImageView()
+                
+                
+                guard let url = URL(string: i.icon.the52X52), let data = try? Data(contentsOf: url) else { return }
                 
                 imageView.image = UIImage(data: data)
+                
+                self.list.append(ListCell(title: i.title, price: i.price, listDescription: i.listDescription, iconString: i.icon.the52X52, icon: imageView))
             }
-            
-            self.list.append(ListCell(title: i.title, price: i.price, listDescription: i.listDescription, iconString: i.icon.the52X52, icon: imageView))
         }
         
     }
