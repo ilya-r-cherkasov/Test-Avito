@@ -16,7 +16,7 @@ class CustomCollectionViewCell: UICollectionViewCell {
             iconImageView.image = data.icon.image
             titleLabel.text = data.title
             descriptionLabel.text = data.listDescription
-            costLabel.text = data.price
+            priceLabel.text = data.price
             checkmarkImageView.isHidden = data.checkMarkIsHidden
         }
     }
@@ -42,15 +42,13 @@ class CustomCollectionViewCell: UICollectionViewCell {
         let label = UILabel()
         label.text = "Описание"
         return label
-        
     }()
     
-    private let costLabel: UILabel = {
+    private let priceLabel: UILabel = {
         
         let label = UILabel()
         label.text = "123$"
         return label
-        
     }()
     
     private let checkmarkImageView: UIImageView = {
@@ -58,7 +56,6 @@ class CustomCollectionViewCell: UICollectionViewCell {
         let imageView = UIImageView()
         imageView.image = UIImage(named: "checkmark")
         return imageView
-        
     }()
 
     override init(frame: CGRect) {
@@ -80,7 +77,7 @@ class CustomCollectionViewCell: UICollectionViewCell {
         titleLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -50).isActive = true
         titleLabel.lineBreakMode = .byWordWrapping
         titleLabel.numberOfLines = 0
-        titleLabel.font = UIFont.boldSystemFont(ofSize: 24.0)
+        titleLabel.font = UIFont.boldSystemFont(ofSize: 23.0)
         titleLabel.sizeToFit()
         
         contentView.addSubview(descriptionLabel)
@@ -92,31 +89,29 @@ class CustomCollectionViewCell: UICollectionViewCell {
         descriptionLabel.numberOfLines = 0
         descriptionLabel.sizeToFit()
         
-        contentView.addSubview(costLabel)
-        costLabel.translatesAutoresizingMaskIntoConstraints = false
-        costLabel.topAnchor.constraint(equalTo: descriptionLabel.bottomAnchor, constant: 5).isActive = true
-        costLabel.leadingAnchor.constraint(equalTo: iconImageView.trailingAnchor, constant: 15).isActive = true
-        costLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -50).isActive = true
-        costLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -15).isActive = true
-        costLabel.lineBreakMode = .byWordWrapping
-        costLabel.numberOfLines = 0
-        costLabel.font = UIFont.boldSystemFont(ofSize: 20.0)
-        costLabel.sizeToFit()
+        contentView.addSubview(priceLabel)
+        priceLabel.translatesAutoresizingMaskIntoConstraints = false
+        priceLabel.topAnchor.constraint(equalTo: descriptionLabel.bottomAnchor, constant: 5).isActive = true
+        priceLabel.leadingAnchor.constraint(equalTo: iconImageView.trailingAnchor, constant: 15).isActive = true
+        priceLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -50).isActive = true
+        priceLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -15).isActive = true
+        priceLabel.lineBreakMode = .byWordWrapping
+        priceLabel.numberOfLines = 0
+        priceLabel.font = UIFont.boldSystemFont(ofSize: 20.0)
+        priceLabel.sizeToFit()
         
         contentView.addSubview(checkmarkImageView)
         checkmarkImageView.translatesAutoresizingMaskIntoConstraints = false
         checkmarkImageView.widthAnchor.constraint(equalToConstant: 20).isActive = true
         checkmarkImageView.heightAnchor.constraint(equalToConstant: 20).isActive = true
-        checkmarkImageView.centerYAnchor.constraint(equalTo: contentView.centerYAnchor).isActive = true
         checkmarkImageView.leadingAnchor.constraint(greaterThanOrEqualTo: descriptionLabel.trailingAnchor, constant: 15).isActive = true
+        checkmarkImageView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 32.5).isActive = true
         checkmarkImageView.sizeToFit()
-        
     }
     
     required init?(coder: NSCoder) {
         
         fatalError("init(coder:) has not been implemented")
-        
     }
     
     override func layoutSubviews() {
@@ -124,7 +119,5 @@ class CustomCollectionViewCell: UICollectionViewCell {
         super.layoutSubviews()
         self.layer.backgroundColor = CGColor(red: 0.5, green: 0.5, blue: 0.5, alpha: 0.2)
         self.layer.cornerRadius = 10.0
-        
     }
-    
 }

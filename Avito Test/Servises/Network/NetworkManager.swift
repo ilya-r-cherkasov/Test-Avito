@@ -8,6 +8,8 @@
 import Foundation
 struct NetworkManager {
     
+    private let fileManager = FileManager.default
+
     enum MyError: Error {
         case DataIsNil
     }
@@ -15,10 +17,11 @@ struct NetworkManager {
     func fetchResult(completitonHandler: @escaping (DataModel?, Error?) -> Void) {
         let url = URL(string: "https://raw.githubusercontent.com/avito-tech/internship/main/result.json")!
         let session = URLSession.shared
-        let task = session.dataTask(with: url, completionHandler: { data, response, error in
+        let request = URLRequest(url: url, cachePolicy: .reloadIgnoringCacheData, timeoutInterval: 15.0)
+        let task = session.dataTask(with: request, completionHandler: { data, response, error in
+            
             do {
                 if let error = error {
-                    print("errorInInt1")
                     completitonHandler(nil, error)
                 } else {
                     guard let data = self.parseJSON(withData: data!) else {
@@ -33,10 +36,10 @@ struct NetworkManager {
         task.resume()
     }
     
-    
-    
     func parseJSON(withData data: Data) -> DataModel? {
+        
         let decoder = JSONDecoder()
+        
         do {
             let result = try decoder.decode(Result.self, from: data)
             guard let dataModel = DataModel(result: result) else {

@@ -5,14 +5,6 @@
 //  Created by Ilya Cherkasov on 10.01.2021.
 //
 
-import Foundation
-
-protocol MainRouterProtocol {
-
-    static func createMainViewModule(mainViewRef: MainView)
-    
-}
-
 class MainRouter: MainRouterProtocol {
     
     class func createMainViewModule(mainViewRef: MainView) {
@@ -24,7 +16,5 @@ class MainRouter: MainRouterProtocol {
         mainViewRef.presenter?.view = mainViewRef
         mainViewRef.presenter?.interactor = MainInteractor()
         mainViewRef.presenter?.interactor?.presenter = presenter
-        
     }
-    
 }

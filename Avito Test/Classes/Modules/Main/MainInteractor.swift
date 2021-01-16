@@ -7,13 +7,6 @@
 
 import Foundation
 
-protocol MainInteractorProtocol: class {
-    
-    var presenter: MainPresenterProtocol? { get set }
-
-    func fetchDataModel()
-}
-
 class MainInteractor: MainInteractorProtocol {
     
     weak var presenter: MainPresenterProtocol?
@@ -21,25 +14,18 @@ class MainInteractor: MainInteractorProtocol {
     func fetchDataModel() {
 
         self.presenter?.view?.showMainView()
-        
         NetworkManager().fetchResult(completitonHandler: { dataModel, error in
             
             DispatchQueue.main.async {
                 
-                if (dataModel != nil) && (dataModel?.list.count != 0) {
-                    self.presenter?.view?.dataGet = dataModel
-                } else {
-                    self.presenter?.view?.ifDataDoesntLoad()
-                }
                 if (error != nil) {
                     self.presenter?.view?.ifDataDoesntLoad()
-                    print("errorInInt2")
+                } else {
+                    if (dataModel != nil) && (dataModel?.list.count != 0) {
+                        self.presenter?.view?.dataGet = dataModel
+                    }
                 }
-                
             }
-            
         })
-
     }
-    
 }
